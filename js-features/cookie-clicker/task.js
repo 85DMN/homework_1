@@ -7,7 +7,7 @@ const fric = document.getElementById('clicker__speed')
         
 img.onclick = () => {
             
-    if (Number(h.textContent)%2 == 0) {
+    if ( Number(h.textContent)%2 == 0 ) {
         img.width -= 20
         img.height -= 20
                 
