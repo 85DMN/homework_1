@@ -1,33 +1,33 @@
 const d = document.getElementById('dead')
 const l = document.getElementById('lost')
 
-function find() {
+find = () => {
     let z = document.querySelectorAll('[id^="hole"]')
     for (let i = 0; i < z.length; i++) {
-        if (z[i].classList.value=='hole hole_has-mole'){
-            return i
+        if (z[i].classList.value == 'hole hole_has-mole'){
+            return { first:i, second:z }
         }
     }
 }
 
-function vic() {d.textContent = Number(d.textContent)+1}
+vic = () => { d.textContent = Number(d.textContent)+1 }
 
-function prog() {l.textContent = Number(l.textContent)+1}
+prog = () => { l.textContent = Number(l.textContent)+1 }
 
-function end() {
+end = () => {
     alert('Вы проиграли!'),
     d.textContent = 0,
     l.textContent = 0
 } 
 
-function analiz(m) {
-    if (Number(l.textContent)<5) {
-        if (m == find()) {
+analiz = (m) => {
+    if (Number(l.textContent) < 4) {
+        if ( m == find().first ) {
             vic()
-        } else {prog()}
-    } else {end()}
+        } else { prog() }
+    } else { end() }
 }
 
-var a = document.querySelectorAll('[id^="hole"]');
+var a = find().second
 
-for (let i = 0; i < a.length; i++) {a[i].onclick = () => {analiz(i)}}
+for ( let i = 0; i < a.length; i++ ) { a[i].onclick = () => { analiz(i) }}
