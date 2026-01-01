@@ -14,20 +14,30 @@ vic = () => { d.textContent = Number(d.textContent)+1 }
 
 prog = () => { l.textContent = Number(l.textContent)+1 }
 
-end = () => {
-    alert('Вы проиграли!'),
+restart = () => {
     d.textContent = 0,
     l.textContent = 0
+}
+
+finVin = () => {
+    alert('Вы победили!'),
+    restart()
+}
+
+end = () => {
+    alert('Вы проиграли!'),
+    restart()
 } 
 
 analiz = (m) => {
     if (Number(l.textContent) < 4) {
         if ( m == find().first ) {
             vic()
+            if (Number(d.textContent) == 10) { finVin() }
         } else { prog() }
     } else { end() }
 }
 
-var a = find().second
+let a = find().second
 
 for ( let i = 0; i < a.length; i++ ) { a[i].onclick = () => { analiz(i) }}
